@@ -1,0 +1,660 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Inventory Management
+</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+	
+	<link rel="icon" type="image/png" href="{% static 'user/images/icons/favicon.png' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/vendor/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/fonts/iconic/css/material-design-iconic-font.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/fonts/linearicons-v1.0.0/icon-font.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/vendor/animate/animate.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/vendor/css-hamburgers/hamburgers.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/vendor/animsition/css/animsition.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/vendor/select2/select2.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/vendor/daterangepicker/daterangepicker.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/vendor/slick/slick.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/vendor/MagnificPopup/magnific-popup.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/css/main.css' %}">
+	<style>
+		
+		
+		
+	</style>
+</head>
+<body class="animsition">
+	
+	<!-- Header -->
+	<header class="header-v2">
+		<!-- Header desktop -->
+		<div class="container-menu-desktop trans-03">
+			<div class="wrap-menu-desktop">
+				<nav class="limiter-menu-desktop p-l-45">
+					
+					<!-- Logo desktop -->		
+					<a href="#" class="logo">
+						<h1 style="font-size: 27px;font-weight: bolder;"><span style="color: #0a0908;" >Inventory</span> Management</h1>
+					</a>
+					
+					<!-- Menu desktop -->
+					<div class="menu-desktop">
+						<ul class="main-menu">
+							<li class="active-menu">
+								<a href="{% url 'seller_dashboard' %}">Dasboard</a>
+							</li>
+							
+							
+							
+							<li>
+								<a href="{% url 'customers_orders' %}">Customer  Orders </a>
+							</li>
+							
+							<li>
+								<a href="{% url 'user_logout' %}">Logout </a>
+							</li>
+							
+						</ul>
+					</div>	
+					
+					<!-- Icon header -->
+					<div class="wrap-icon-header flex-w flex-r-m h-full mr-5">
+						
+						<a href="{% url 'user_dashboard' %}" class="relative inline-block px-4 py-2 font-medium text-white bg-indigo-600 border border-gray-300 rounded-md hover:bg-red-600 hover:text-white hover:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 transition-all duration-300 ease-in-out">
+							Buy Product
+						</a>
+					</div>
+				</nav>
+			</div>	
+		</div>
+		
+		<!-- Header Mobile -->
+		<div class="wrap-header-mobile">
+			<!-- Logo moblie -->		
+			<div class="logo-mobile">
+				<a href="index.html"><h1 style="font-size: 27px;font-weight: bolder;"><span style="color: #0a0908;" >Inventory</span> Management</h1></a>
+			</div>
+			
+			<!-- Icon header -->
+			<div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart mx-2" data-notify="2">
+					<a href="{% url 'cart' %}"><i class="zmdi zmdi-shopping-cart"></i></a>
+				</div>
+				<a href="user-login.html" class="relative inline-block px-4 py-2 font-medium text-white bg-red-600 border border-gray-300 rounded-md hover:bg-indigo-600 hover:text-white hover:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 transition-all duration-300 ease-in-out">
+					LOGOUT
+				</a>
+				
+			</div>
+			
+			<!-- Button show menu -->
+			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+				<span class="hamburger-box">
+					<span class="hamburger-inner"></span>
+				</span>
+			</div>
+		</div>
+		
+		
+		<!-- Menu Mobile -->
+		<div class="menu-mobile">
+			<ul class="main-menu-m">
+				<li class="active-menu">
+					<a href="user-dashboard.html">Home</a>
+				</li>
+				
+				<li >
+					<a href="{% url 'user_explore' %}">Explore</a>
+				</li>
+				
+				<li>
+					<a href="">My Account </a>
+					<ul class="sub-menu">
+						<li><a href="{% url 'my_purchases' %}">My purchases</a></li>
+						<li><a href="{% url 'my_orders' %}" >MY Orders</a></li>
+					</ul>
+				</li>
+				
+				<li  >
+					<a href="{% url 'my_profile' %}">My Profile </a>
+				</li>
+			</ul>
+		</div>
+		
+		<!-- Modal Search -->
+		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+			<div class="container-search-header">
+				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+					<img src="{% static 'user/images/icons/icon-close2.png' %}" alt="CLOSE">
+					
+				</button>
+				
+				<form class="wrap-search-header flex-w p-l-15">
+					<button class="flex-c-m trans-04">
+						<i class="zmdi zmdi-search"></i>
+					</button>
+					<input class="plh3" type="text" name="search" placeholder="Search...">
+				</form>
+			</div>
+		</div>
+	</header>
+	
+	<!-- Sidebar -->
+	
+	
+	
+	
+	<!-- Slider -->
+	<div class="sec-banner bg0 p-b-55">
+		<div class="container">
+			<div class="text-center py-6 mb-5" style="background-color: #117a8b;">
+				<h1 class="font-bold text-gray-100 mb-2" style="font-size: 42px;">Manage & Sell Your Products</h1>
+				<p class="text-white">List your items, manage inventory, and connect with buyers looking for a wide range of products. A marketplace where everything finds its place.</p>
+			</div>
+			
+			<div class="container my-5">
+				<div class="row">
+					<!-- Image Section -->
+					<div class="col-md-5">
+						<img src="{% static 'user/images/3img1.avif' %}" class="img-fluid" alt="Craft Image">
+					</div>
+					<!-- Form Section -->
+					<div class="col-md-7">
+						<form style="border: 3px solid #eaecef; padding: 20px; border-radius: 8px;" method="POST" enctype="multipart/form-data">
+							{% csrf_token %}
+							<div class="row">
+								<div class="col-md-6 mb-3">
+									<label for="craftName" class="form-label">Item Name</label>
+									<input type="text" class="form-control" id="craftName" placeholder="Enter name" name="craftname" required>
+								</div>
+								<div class="col-md-6 mb-3">
+									<label for="craftPrice" class="form-label">Price (₹)</label>
+									<input type="number" class="form-control" id="craftPrice" placeholder="Enter price" name="craftprice" required>
+								</div>
+							</div>
+							<!-- New Fields for Brand Name and Quantity -->
+							<div class="row">
+								<div class="col-md-6 mb-3">
+									<label for="brandName" class="form-label">Brand Name</label>
+									<input type="text" class="form-control" id="brandName" placeholder="Enter brand name" name="brandname">
+								</div>
+								<div class="col-md-6 mb-3">
+									<label for="quantity" class="form-label">Quantity</label>
+									<input type="number" class="form-control" id="quantity" placeholder="Enter quantity" name="quantity" min="1" value="1" required>
+								</div>
+							</div>
+							<div class="row">
+								<div class="mb-3 col-6">
+									<label for="craftImages" class="form-label">Item Images</label>
+									<input type="file" class="form-control" id="craftImages" multiple accept="image/*" name="craftimg" required>
+								</div>
+								<div class="mb-3 col-6">
+									<label for="craftVideo" class="form-label">Item Making Video</label>
+									<input type="file" class="form-control" id="craftVideo" accept="video/*" name="craftvideo" required>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 mb-3">
+									<label for="craftCategory" class="form-label">Item Category</label>
+									<select class="form-select form-control" id="craftCategory" name="craftCategory" required>
+										<option selected>Choose...</option>
+										<option value="Electronics">Electronics</option>
+										<option value="Home Appliances">Home Appliances</option>
+										<option value="Furniture">Furniture</option>
+										<option value="Clothing">Clothing</option>
+										<option value="Footwear">Footwear</option>
+										<option value="Books">Books</option>
+										<option value="Toys">Toys</option>
+										<option value="Automobiles">Automobiles</option>
+										<option value="Sports Equipment">Sports Equipment</option>
+										<option value="Others">Others</option>
+									</select>
+								</div>
+								<div class="col-md-6 mb-3">
+									<label for="state" class="form-label">State</label>
+									<select class="form-select form-control" id="state" name="state" required>
+										<option selected>Choose...</option>
+										<option value="Andhra Pradesh">Andhra Pradesh</option>
+										<option value="Assam">Assam</option>
+										<option value="Bihar">Bihar</option>
+										<option value="Chhattisgarh">Chhattisgarh</option>
+										<option value="Goa">Goa</option>
+										<option value="Gujarat">Gujarat</option>
+										<option value="Haryana">Haryana</option>
+										<option value="Himachal Pradesh">Himachal Pradesh</option>
+										<option value="Jharkhand">Jharkhand</option>
+										<option value="Karnataka">Karnataka</option>
+										<option value="Kerala">Kerala</option>
+										<option value="Madhya Pradesh">Madhya Pradesh</option>
+										<option value="Maharashtra">Maharashtra</option>
+										<option value="Manipur">Manipur</option>
+										<option value="Meghalaya">Meghalaya</option>
+										<option value="Mizoram">Mizoram</option>
+										<option value="Nagaland">Nagaland</option>
+										<option value="Odisha">Odisha</option>
+										<option value="Punjab">Punjab</option>
+										<option value="Rajasthan">Rajasthan</option>
+										<option value="Sikkim">Sikkim</option>
+										<option value="Tamil Nadu">Tamil Nadu</option>
+										<option value="Telangana">Telangana</option>
+										<option value="Tripura">Tripura</option>
+										<option value="Uttar Pradesh">Uttar Pradesh</option>
+										<option value="Uttarakhand">Uttarakhand</option>
+										<option value="West Bengal">West Bengal</option>
+										<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 mb-3">
+									<label for="city" class="form-label">City</label>
+									<input type="text" class="form-control" id="city" placeholder="Enter city" name="city" required>
+								</div>
+								<div class="col-md-6 mb-3">
+									<label for="pinCode" class="form-label">Pin Code</label>
+									<input type="text" class="form-control" id="pinCode" placeholder="Enter pin code" name="pincode" required>
+								</div>
+							</div>
+							<div class="mb-3">
+								<label for="craftDescription" class="form-label">Description</label>
+								<textarea class="form-control" id="craftDescription" rows="3" placeholder="Describe your craft" name="description" required></textarea>
+							</div>
+							<button type="submit" class="btn btn-primary" style="background-color: #3498db; border-color: #3498db;">Submit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			
+		</div>
+	</div>
+	
+	
+	
+	<!-- Footer -->
+	<footer class="bg3 p-t-75 p-b-32">
+		<div class="container">
+			<div class="row container text-center">
+				<div class="col-sm-6 col-lg-6 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						links
+					</h4>
+					
+					<ul>
+						<li class="p-b-10">
+							<a href="{% url 'seller_dashboard' %}" class="stext-107 cl7 hov-cl1 trans-04">
+								Dashboard
+							</a>
+						</li>
+						
+						<li class="p-b-10">
+							<a href="{% url 'customers_orders' %}" class="stext-107 cl7 hov-cl1 trans-04">
+								customers_orders
+							</a>
+						</li>
+						
+											</ul>
+				</div>
+				
+				
+				
+				<div class="col-sm-6 col-lg-6 p-b-50 text-center">
+					<h4 class="stext-301 cl0 p-b-30">
+						GET IN TOUCH
+					</h4>
+					
+					<div class="">
+						<p class="stext-107 cl7 size-201 mx-auto">
+							New Gayatri Nagar, Lb Nagar Hyderabad.
+						</p>
+					</div>
+					
+					<div class="p-t-27">
+						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-facebook"></i>
+						</a>
+						
+						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-instagram"></i>
+						</a>
+						
+						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-pinterest-p"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+			
+			<div class="p-t-40">
+				
+				
+				<p class="stext-107 cl6 txt-center">
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://codeleaf.in" target="_blank">codeleaf</a>
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					
+				</p>
+			</div>
+		</div>
+	</footer>
+	
+	
+	<!-- Back to top -->
+	<div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="zmdi zmdi-chevron-up"></i>
+		</span>
+	</div>
+	
+	<!-- Modal1 -->
+	<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
+		<div class="overlay-modal1 js-hide-modal1"></div>
+		
+		<div class="container">
+			<div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
+				<button class="how-pos3 hov3 trans-04 js-hide-modal1">
+					<img src="images/icons/icon-close.png" alt="CLOSE">
+				</button>
+				
+				<div class="row">
+					<div class="col-md-6 col-lg-7 p-b-30">
+						<div class="p-l-25 p-r-30 p-lr-0-lg">
+							<div class="wrap-slick3 flex-sb flex-w">
+								<div class="wrap-slick3-dots"></div>
+								<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
+								
+								<div class="slick3 gallery-lb">
+									<div class="item-slick3" data-thumb="images/product-detail-01.jpg">
+										<div class="wrap-pic-w pos-relative">
+											<img src="images/product-detail-01.jpg" alt="IMG-PRODUCT">
+											
+											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-01.jpg">
+												<i class="fa fa-expand"></i>
+											</a>
+										</div>
+									</div>
+									
+									<div class="item-slick3" data-thumb="images/product-detail-02.jpg">
+										<div class="wrap-pic-w pos-relative">
+											<img src="images/product-detail-02.jpg" alt="IMG-PRODUCT">
+											
+											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-02.jpg">
+												<i class="fa fa-expand"></i>
+											</a>
+										</div>
+									</div>
+									
+									<div class="item-slick3" data-thumb="images/product-detail-03.jpg">
+										<div class="wrap-pic-w pos-relative">
+											<img src="images/product-detail-03.jpg" alt="IMG-PRODUCT">
+											
+											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-03.jpg">
+												<i class="fa fa-expand"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-md-6 col-lg-5 p-b-30">
+						<div class="p-r-50 p-t-5 p-lr-0-lg">
+							<h4 class="mtext-105 cl2 js-name-detail p-b-14">
+								Lightweight Jacket
+							</h4>
+							
+							<span class="mtext-106 cl2">
+								$58.79
+							</span>
+							
+							<p class="stext-102 cl3 p-t-23">
+								Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
+							</p>
+							
+							<!--  -->
+							<div class="p-t-33">
+								<div class="flex-w flex-r-m p-b-10">
+									<div class="size-203 flex-c-m respon6">
+										Size
+									</div>
+									
+									<div class="size-204 respon6-next">
+										<div class="rs1-select2 bor8 bg0">
+											<select class="js-select2" name="time">
+												<option>Choose an option</option>
+												<option>Size S</option>
+												<option>Size M</option>
+												<option>Size L</option>
+												<option>Size XL</option>
+											</select>
+											<div class="dropDownSelect2"></div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="flex-w flex-r-m p-b-10">
+									<div class="size-203 flex-c-m respon6">
+										Color
+									</div>
+									
+									<div class="size-204 respon6-next">
+										<div class="rs1-select2 bor8 bg0">
+											<select class="js-select2" name="time">
+												<option>Choose an option</option>
+												<option>Red</option>
+												<option>Blue</option>
+												<option>White</option>
+												<option>Grey</option>
+											</select>
+											<div class="dropDownSelect2"></div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="flex-w flex-r-m p-b-10">
+									<div class="size-204 flex-w flex-m respon6-next">
+										<div class="wrap-num-product flex-w m-r-20 m-tb-10">
+											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+												<i class="fs-16 zmdi zmdi-minus"></i>
+											</div>
+											
+											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1">
+											
+											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+												<i class="fs-16 zmdi zmdi-plus"></i>
+											</div>
+										</div>
+										
+										<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+											Add to cart
+										</button>
+									</div>
+								</div>	
+							</div>
+							
+							<!--  -->
+							<div class="flex-w flex-m p-l-100 p-t-40 respon7">
+								<div class="flex-m bor9 p-r-10 m-r-11">
+									<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
+										<i class="zmdi zmdi-favorite"></i>
+									</a>
+								</div>
+								
+								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
+									<i class="fa fa-facebook"></i>
+								</a>
+								
+								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">
+									<i class="fa fa-twitter"></i>
+								</a>
+								
+								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">
+									<i class="fa fa-google-plus"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script src="{% static 'user/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'user/vendor/animsition/js/animsition.min.js' %}"></script>
+	<script src="{% static 'user/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'user/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'user/vendor/select2/select2.min.js' %}"></script>
+	<script>
+		$(".js-select2").each(function(){
+			$(this).select2({
+				minimumResultsForSearch: 20,
+				dropdownParent: $(this).next('.dropDownSelect2')
+			});
+		})
+	</script>
+	<!--===============================================================================================-->
+	<script src="{% static 'user/vendor/daterangepicker/moment.min.js' %}"></script>
+	<script src="{% static 'user/vendor/daterangepicker/daterangepicker.js' %}"></script>
+	
+	<!--===============================================================================================-->
+	<script src="{% static 'user/vendor/slick/slick.min.js' %}"></script>
+	<script src="{% static 'user/js/slick-custom.js' %}"></script>
+	
+	<!--===============================================================================================-->
+	<script src="{% static 'user/vendor/parallax100/parallax100.js' %}"></script>
+	
+	<script>
+		$('.parallax100').parallax100();
+	</script>
+	<!--===============================================================================================-->
+	<script src="{% static 'user/vendor/MagnificPopup/jquery.magnific-popup.min.js' %}"></script>
+	<script>
+		$('.gallery-lb').each(function() { // the containers for all your galleries
+			$(this).magnificPopup({
+				delegate: 'a', // the selector for gallery item
+				type: 'image',
+				gallery: {
+					enabled:true
+				},
+				mainClass: 'mfp-fade'
+			});
+		});
+	</script>
+	<!--===============================================================================================-->
+	<script src="{% static 'user/vendor/isotope/isotope.pkgd.min.js' %}"></script>
+	<!--===============================================================================================-->
+	<script src="{% static 'user/vendor/sweetalert/sweetalert.min.js' %}"></script>
+	
+	<script>
+		$('.js-addwish-b2').on('click', function(e){
+			e.preventDefault();
+		});
+		
+		$('.js-addwish-b2').each(function(){
+			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to wishlist !", "success");
+				
+				$(this).addClass('js-addedwish-b2');
+				$(this).off('click');
+			});
+		});
+		
+		$('.js-addwish-detail').each(function(){
+			var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+			
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to wishlist !", "success");
+				
+				$(this).addClass('js-addedwish-detail');
+				$(this).off('click');
+			});
+		});
+		
+		/*---------------------------------------------*/
+		
+		$('.js-addcart-detail').each(function(){
+			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to cart !", "success");
+			});
+		});
+	</script>
+	<!--===============================================================================================-->
+	<script src="{% static 'user/vendor/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+	<script>
+		$('.js-pscroll').each(function(){
+			$(this).css('position','relative');
+			$(this).css('overflow','hidden');
+			var ps = new PerfectScrollbar(this, {
+				wheelSpeed: 1,
+				scrollingThreshold: 1000,
+				wheelPropagation: false,
+			});
+			
+			$(window).on('resize', function(){
+				ps.update();
+			})
+		});
+	</script>
+	<!--===============================================================================================-->
+	<script src="{% static 'user/js/main.js' %}"></script>
+	
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+{% if messages %}
+{% for message in messages %}
+{% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+<script>
+	swal({
+		title: "Warning!",
+		text: "{{ message }}",
+		icon: "warning",
+		button: "OK",
+	});
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+<script>
+	swal({
+		title: "Info :)",
+		text: "{{ message }}",
+		icon: "info",
+		button: "OK",
+	});
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+<script>
+	swal({
+		title: "Error :)",
+		text: "{{ message }}",
+		icon: "error",
+		button: "OK",
+	});
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+<script>
+	swal({
+		title: "Success :)",
+		text: "{{ message }}",
+		icon: "success",
+		button: "OK",
+	});
+</script>
+{% endif %}
+{% endfor %}
+{% endif %}
+</html>

@@ -1,0 +1,940 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ಭಾರತದಲ್ಲಿ ಕೈಗಾರಿಕೆಗಳು</title>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="icon" type="image/png" href="{% static 'user/images/icons/favicon.png' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/fonts/iconic/css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/fonts/linearicons-v1.0.0/icon-font.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/vendor/animate/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/vendor/css-hamburgers/hamburgers.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/vendor/animsition/css/animsition.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/vendor/select2/select2.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/vendor/daterangepicker/daterangepicker.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/vendor/slick/slick.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/vendor/MagnificPopup/magnific-popup.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/css/main.css' %}">
+    <style>
+        
+        .handmade-product-img {
+            width: 400px;  
+            height: 400px; 
+            object-fit: cover; 
+        }
+        .handmade-product-img3{
+            width: 100px;  
+            height: 200px; 
+            object-fit: cover; 
+        }
+        .block2 {
+            display: flex;
+            flex-direction: column;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            margin: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .block2:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .block2-pic {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .block2-pic .handmade-product-img3 {
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+        
+        .block2:hover .handmade-product-img3 {
+            transform: scale(1.05);
+        }
+        
+        .block2-txt {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+        }
+        
+        .block2-txt-child1 {
+            flex-grow: 1;
+            max-width: calc(100% - 120px); 
+            margin-right: 8px; 
+        }
+        
+        .stext-105 {
+            font-size: 18px;
+            color: #3498db;
+            font-weight: bold;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .block2-txt-child2 {
+            flex-shrink: 0;
+            margin-left: auto; 
+        }
+        
+        .btn-primary {
+            background-color: #3498db;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            white-space: nowrap;
+            min-width: 100px; 
+            display: block;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 768px) {
+            .block2-txt {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .block2-txt-child1,
+            .block2-txt-child2 {
+                width: 100%; 
+                margin-bottom: 10px;
+            }
+            
+            .btn-primary {
+                width: auto;
+            }
+        }
+        
+        #languageSwitchBtn {
+            position: fixed;
+            bottom: 40px;
+            left: 25px;
+            border-radius: 50%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #ffffff;
+            cursor: pointer;
+            box-shadow:0 3px 10px rgba(132,132,132,0.7)
+        }
+        
+        #languageModal {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            left: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        
+        .languageOption {
+            margin: 5px;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body class="animsition">
+    
+    <!-- Header -->
+    <header class="header-v2">
+        <!-- Header desktop -->
+        <div class="container-menu-desktop trans-03">
+            <div class="wrap-menu-desktop">
+                <nav class="limiter-menu-desktop p-l-45">
+                    
+                    <!-- Logo desktop -->		
+                    <a href="#" class="logo">
+                        <h1 style="font-size: 27px; font-weight: bolder;"><span style="color: #0a0908;">ಕೈಗಾರಿಕೆ</span> ಸ್ಟೋರ್</h1>
+                        
+                    </a>
+                    
+                    <!-- Menu desktop -->
+                    <div class="menu-desktop">
+                        <ul class="main-menu">
+                            <li class="active-menu">
+                                <a href="{% url 'user_dashboard' %}">ಡ್ಯಾಶ್ಬೋರ್ಡ್</a>
+                            </li>
+                            
+                            <li>
+                                <a href="{% url 'user_explore' %}">ಅನ್ವೇಷಿಸಿ</a>
+                            </li>
+                            
+                            <li>
+                                <a href="">ನನ್ನ ಖಾತೆ </a>
+                                <ul class="sub-menu">
+                                    <li><a href="{% url 'my_purchases' %}">ನನ್ನ ಖರಿದುಗಳು</a></li>
+                                    <li><a href="{% url 'my_orders' %}">ನನ್ನ ಆದೇಶಗಳು</a></li>
+                                </ul>
+                            </li>
+                            
+                            <li>
+                                <a href="{% url 'my_profile' %}">ನನ್ನ ಪ್ರೊಫೈಲ್ </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'user_logout' %}">ಲಾಗ್ ಔಟ್ </a>
+                            </li>
+                        </ul>
+                        
+                    </div>	
+                    
+                    <!-- Icon header -->
+                    <div class="wrap-icon-header flex-w flex-r-m h-full mr-5">
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart " data-notify="{{ cart_item_count }}">
+                            <a href="{% url 'cart' %}"><i class="zmdi zmdi-shopping-cart"></i></a>
+                        </div>
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11  js-show-wishlist mr-4" data-notify="{{ wishlist_item_count }}">
+                            <a href="{% url 'wishlist' %}"><i class="zmdi zmdi-favorite-outline"></i></a>
+                        </div>
+                        
+                        <a href="{% url 'seller_dashboard' %}" class="relative inline-block px-4 py-2 font-medium text-white bg-red-600 border border-gray-300 rounded-md hover:bg-indigo-600 hover:text-white hover:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 transition-all duration-300 ease-in-out">
+                            ಖಾತೆ ಬದಲಾಯಿಸಿ
+                        </a>
+                        
+                    </div>
+                </nav>
+            </div>	
+        </div>
+        
+        <!-- Header Mobile -->
+        <div class="wrap-header-mobile">
+            <!-- Logo moblie -->		
+            <div class="logo-mobile">
+                <a href="index.html"><h1 style="font-size: 27px;font-weight: bolder;"><span style="color: #0a0908;" >Inventory</span> Management</h1></a>
+            </div>
+            
+            <!-- Icon header -->
+            <div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart mx-2" data-notify="2">
+                    <a href="{% url 'cart' %}"><i class="zmdi zmdi-shopping-cart"></i></a>
+                </div>
+                <a href="user-login.html" class="relative inline-block px-4 py-2 font-medium text-white bg-red-600 border border-gray-300 rounded-md hover:bg-indigo-600 hover:text-white hover:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 transition-all duration-300 ease-in-out">
+                    LOGOUT
+                </a>
+                
+            </div>
+            
+            <!-- Button show menu -->
+            <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </div>
+        </div>
+        
+        
+        <!-- Menu Mobile -->
+        <div class="menu-mobile">
+            <ul class="main-menu-m">
+                <li class="active-menu">
+                    <a href="user-dashboard.html">Home</a>
+                </li>
+                
+                <li >
+                    <a href="{% url 'user_explore' %}">Explore</a>
+                </li>
+                
+                <li>
+                    <a href="">My Account </a>
+                    <ul class="sub-menu">
+                        <li><a href="{% url 'my_purchases' %}">My purchases</a></li>
+                        <li><a href="{% url 'my_orders' %}" >MY Orders</a></li>
+                    </ul>
+                </li>
+                
+                <li  >
+                    <a href="{% url 'my_profile' %}">My Profile </a>
+                </li>
+                <li>
+                    <a href="{% url 'user_logout' %}">Logout </a>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Modal Search -->
+        <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+            <div class="container-search-header">
+                <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+                    <img src="{% static 'user/images/icons/icon-close2.png' %}" alt="CLOSE">
+                    
+                </button>
+                
+                <form class="wrap-search-header flex-w p-l-15">
+                    <button class="flex-c-m trans-04">
+                        <i class="zmdi zmdi-search"></i>
+                    </button>
+                    <input class="plh3" type="text" name="search" placeholder="Search...">
+                </form>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Sidebar -->
+    
+    
+    
+    
+    <!-- Slider -->
+    <div class="sec-banner bg0 p-b-55">
+        <div class="container">
+            <div class="text-center py-6 mb-5" style="background-color: #0a0908;">
+                <h1 class="font-bold text-gray-800 mb-2" style="background-color: #0a0908; color: white; font-size: 42px;">ನಮ್ಮ ವರ್ಗಗಳನ್ನು ಅನ್ವೇಷಿಸಿ</h1>
+                <p class="text-white">ಭಾರತದಾದ್ಯಂತ ಶ್ರೇಷ್ಠ ಕೈಗಾರಿಕೆಗಳನ್ನು ನೀವು ಇಲ್ಲಿ ಕಂಡುಹಿಡಿಯಿರಿ, ನಿಮಗಾಗಿ ನೇಮಕಗೊಂಡಿದೆ.</p>
+            </div>
+            
+            
+            <div class="row container">
+                <!-- Clothes Category -->
+                <div class="col-md-6 p-b-30 m-lr-auto">
+                    <div class="block1 wrap-pic-w">
+                        <img src="{% static 'user/images/img27.jpg' %}" alt="Clothes Category" class="handmade-product-img">
+                        <a href="{% url 'category_view' 'Textiles' %}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                            <div class="block1-txt-child1 flex-col-l">
+                                <span class="block1-name ltext-102 trans-04 p-b-8 text-white">
+                                    ವಸ್ತ್ರಗಳು
+                                </span>
+                                <span class="block1-info stext-102 trans-04 text-white">
+                                    ಸಾಂಪ್ರದಾಯಿಕ ಮತ್ತು ಆಧುನಿಕ
+                                </span>
+                            </div>
+                            
+                            <div class="block1-txt-child2 p-b-4 trans-05">
+                                <div class="block1-link stext-101 cl0 trans-09">
+                                    ಈಗ ಖರೀದಿಸಿ
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Electronics Category -->
+                <div class="col-md-6 p-b-30 m-lr-auto">
+                    <div class="block1 wrap-pic-w">
+                        <img src="{% static 'user/images/img21.avif' %}" alt="Electronics Category" class="handmade-product-img">
+                        
+                        <a href="{% url 'category_view' 'Paintings' %}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                            <div class="block1-txt-child1 flex-col-l">
+                                <span class="block1-name ltext-102 trans-04 p-b-8 text-white">
+                                    ಚಿತ್ರಕಲೆಗಳು
+                                </span>
+                                <span class="block1-info stext-102 trans-04 text-white">
+                                    ಕೈಗಾರಿಕವಾಗಿ ಮತ್ತು ಹೊಸದುಗಳಾಗಿ
+                                </span>
+                                
+                            </div>
+                            <div class="block1-txt-child2 p-b-4 trans-05">
+                                <div class="block1-link stext-101 cl0 trans-09">
+                                    ಈಗ ಖರೀದಿಸಿ
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Handmade Crafts Category -->
+                <div class="col-md-6 col-lg-4 p-b-30 m-lr-auto">
+                    <div class="block1 wrap-pic-w">
+                        <img src="{% static 'user/images/img23.jpg' %}" alt="Handmade Crafts">
+                        <a href="{% url 'category_view' 'Stone Craft' %}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                            <div class="block1-txt-child1 flex-col-l">
+                                <span class="block1-name ltext-102 trans-04 p-b-8 text-white">
+                                    ಕಲ್ಲು ಕೈಗಾರಿಕೆ
+                                </span>
+                                <span class="block1-info stext-102 trans-04 text-white">
+                                    ಅದ್ವಿತೀಯ ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ
+                                </span>
+                                
+                            </div>
+                            <div class="block1-txt-child2 p-b-4 trans-05">
+                                <div class="block1-link stext-101 cl0 trans-09 text-white">
+                                    ಈಗ ಖರೀದಿಸಿ
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Home Decor Category -->
+                <div class="col-md-6 col-lg-4 p-b-30 m-lr-auto">
+                    <div class="block1 wrap-pic-w">
+                        <img src="{% static 'user/images/img22.jpg' %}" alt="Home Decor">
+                        
+                        <a href="{% url 'category_view' 'Accessories' %}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                            <div class="block1-txt-child1 flex-col-l">
+                                <span class="block1-name ltext-102 trans-04 p-b-8 text-white">
+                                    ಸಜ್ಜುಗಾರಿಕೆಗಳು
+                                </span>
+                                <span class="block1-info stext-102 trans-04 text-white">
+                                    ಸಾಂಪ್ರದಾಯಿಕ ಮತ್ತು ಆಧುನಿಕ
+                                </span>
+                                
+                            </div>
+                            <div class="block1-txt-child2 p-b-4 trans-05">
+                                <div class="block1-link stext-101 cl0 trans-09">
+                                    ಈಗ ಖರೀದಿಸಿ
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Jewelry Category -->
+                <div class="col-md-6 col-lg-4 p-b-30 m-lr-auto">
+                    <div class="block1 wrap-pic-w">
+                        <img src="{% static 'user/images/img19.jpg' %}" alt="Jewelry">
+                        
+                        <a href="{% url 'category_view' 'Jewelry' %}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                            <div class="block1-txt-child1 flex-col-l">
+                                <span class="block1-name ltext-102 trans-04 p-b-8 text-white">
+                                    ಆಭರಣಗಳು
+                                </span>
+                                <span class="block1-info stext-102 trans-04 text-white">
+                                    ಕೈಯಲ್ಲಿ ತಯಾರಿಸಿದ ಅಲಂಕಾರ
+                                </span>
+                                
+                            </div>
+                            <div class="block1-txt-child2 p-b-4 trans-05">
+                                <div class="block1-link stext-101 cl0 trans-09">
+                                    ಈಗ ಖರೀದಿಸಿ
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                
+                <div class="col-md-4 col-lg-3 p-b-30 m-lr-auto">
+                    <div class="block1 wrap-pic-w">
+                        <img src="{% static 'user/images/img18.jpg' %}" alt="Handmade Crafts">
+                        
+                        <a href="{% url 'category_view' 'Handmade Crafts' %}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                            <div class="block1-txt-child1 flex-col-l">
+                                <span class="block1-name ltext-102 trans-04 p-b-8 text-white">
+                                    ಕೈತೋರಿ ಕೈಗಾರಿಕೆಗಳು
+                                </span>
+                                <span class="block1-info stext-102 trans-04 text-white">
+                                    ಅದ್ವಿತೀಯ ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ
+                                </span>
+                                
+                            </div>
+                            <div class="block1-txt-child2 p-b-4 trans-05">
+                                <div class="block1-link stext-101 cl0 trans-09 text-white">
+                                    ಈಗ ಖರೀದಿಸಿ
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3 p-b-30 m-lr-auto">
+                    <div class="block1 wrap-pic-w">
+                        <img src="{% static 'user/images/img24.jpg' %}" alt="Handmade Crafts">
+                        
+                        <a href="{% url 'category_view' 'Leather Work' %}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                            <div class="block1-txt-child1 flex-col-l">
+                                <span class="block1-name ltext-102 trans-04 p-b-8 text-white">
+                                    ಚರ್ಮದ ಕೆಲಸ
+                                </span>
+                                <span class="block1-info stext-102 trans-04 text-white">
+                                    ಅದ್ವಿತೀಯ ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ
+                                </span>
+                                
+                            </div>
+                            <div class="block1-txt-child2 p-b-4 trans-05">
+                                <div class="block1-link stext-101 cl0 trans-09 text-white">
+                                    ಈಗ ಖರೀದಿಸಿ
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Home Decor Category -->
+                <div class="col-md-4 col-lg-3 p-b-30 m-lr-auto">
+                    <div class="block1 wrap-pic-w">
+                        <img src="{% static 'user/images/img25.jpg' %}" alt="Home Decor">
+                        
+                        <a href="{% url 'category_view' 'Pottery and Ceramics' %}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                            <div class="block1-txt-child1 flex-col-l">
+                                <span class="block1-name ltext-102 trans-04 p-b-8 text-white">
+                                    ಮಣ್ಣಿನ ಕೆಲಸ ಮತ್ತು ಚೀನಾಗಿಕೆ
+                                </span>
+                                <span class="block1-info stext-102 trans-04 text-white">
+                                    ಪಾರಂಪರಿಕ ಮತ್ತು ಆಧುನಿಕ
+                                </span>
+                                
+                            </div>
+                            <div class="block1-txt-child2 p-b-4 trans-05">
+                                <div class="block1-link stext-101 cl0 trans-09">
+                                    ಈಗ ಖರೀದಿಸಿ
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Jewelry Category -->
+                <div class="col-md-4 col-lg-3 p-b-30 m-lr-auto">
+                    <div class="block1 wrap-pic-w">
+                        <img src="{% static 'user/images/img26.jpg' %}" alt="Jewelry" style="height: 180px;">
+                        
+                        <a href="{% url 'category_view' 'Metalwork' %}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+                            <div class="block1-txt-child1 flex-col-l">
+                                <span class="block1-name ltext-102 trans-04 p-b-8 text-white">
+                                    ಲೋಹದ ಕೆಲಸ
+                                </span>
+                                <span class="block1-info stext-102 trans-04 text-white">
+                                    ಕೈತೋರಿಕೆಯ ಶೋಭೆ
+                                </span>
+                                
+                            </div>
+                            <div class="block1-txt-child2 p-b-4 trans-05">
+                                <div class="block1-link stext-101 cl0 trans-09">
+                                    ಈಗ ಖರೀದಿಸಿ
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+    <!-- Product -->
+    <section class="sec-product bg0  p-b-20">
+        <div class="container">
+            <div class="p-3 text-center" style="background-color: #0a0908;">
+                <h3 class="" style="font-size: 40px; color: #f9f9f9;">
+                    ನಮ್ಮ ರಾಜ್ಯಗಳ ಕೈಗಾರಿಕೆಗಳನ್ನು ಅನ್ವೇಷಿಸಿ
+                </h3>
+                
+            </div>
+            
+            <!-- Tab01 -->
+            <div class="tab01 container">
+                <!-- Nav tabs -->
+                
+                
+                <!-- Tab panes -->
+                <div class="tab-content p-b-100">
+                    <!-- - -->
+                    <div class="tab-pane fade show active" id="handmade-crafts" role="tabpanel">
+                        <div class="wrap-slick2">
+                            <div class="slick2">
+                                <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+                                    <div class="block2">
+                                        <div class="block2-pic hov-img0">
+                                            <img src="{% static 'user/images/img34.webp' %}" alt="Kanchipuram Silk Sarees" class="handmade-product-img3">
+                                            
+                                        </div>
+                                        <div class="block2-txt flex-w flex-t p-t-14">
+                                            <div class="block2-txt-child1  flex-col-l ">
+                                                
+                                                <span class="stext-105 cl3">
+                                                    ತಮಿಳು ನಾಡು
+                                                </span>
+                                            </div>
+                                            <div class="block2-txt-child2 flex-r p-t-3">
+                                                <a href="{% url 'crafts_by_state' 'Tamil Nadu' %}" class="btn btn-primary">ಹೆಚ್ಚು ನೋಡಿ" </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+                                    <div class="block2">
+                                        <div class="block2-pic hov-img0">
+                                            <img src="{% static 'user/images/img31.avif' %}" alt="Bidri Craft" class="handmade-product-img3">
+                                            
+                                        </div>
+                                        <div class="block2-txt flex-w flex-t p-t-14">
+                                            <div class="block2-txt-child1 flex-col-l ">
+                                                
+                                                <span class="stext-105 cl3">
+                                                    ತೆಲಂಗಾಣ
+                                                </span>
+                                            </div>
+                                            <div class="block2-txt-child2 flex-r p-t-3">
+                                                <a href="{% url 'crafts_by_state' 'Telangana' %}" class="btn btn-primary">ಹೆಚ್ಚು ನೋಡಿ" </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Gujarat Product -->
+                                <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+                                    <div class="block2">
+                                        <div class="block2-pic hov-img0">
+                                            <img src="{% static 'user/images/guj.jpg' %}" alt="Bandhani Textiles" class="handmade-product-img3">
+                                            
+                                        </div>
+                                        <div class="block2-txt flex-w flex-t p-t-14">
+                                            <div class="block2-txt-child1 flex-col-l ">
+                                                
+                                                <span class="stext-105 cl3">
+                                                    ಗುಜರಾತ್
+                                                </span>
+                                            </div>
+                                            <div class="block2-txt-child2 flex-r p-t-3">
+                                                <a href="{% url 'crafts_by_state' 'Gujarat' %}" class="btn btn-primary">ಹೆಚ್ಚು ನೋಡಿ" </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+                                    <div class="block2">
+                                        <div class="block2-pic hov-img0">
+                                            <img src="{% static 'user/images/img32.jpg' %}" alt="Kalamkari Textiles" class="handmade-product-img3">
+                                            
+                                        </div>
+                                        <div class="block2-txt flex-w flex-t p-t-14">
+                                            <div class="block2-txt-child1 flex-col-l ">
+                                                
+                                                
+                                                <span class="stext-105 cl3">
+                                                    ಎಪಿ
+                                                </span>
+                                            </div>
+                                            <div class="block2-txt-child2 flex-r p-t-3">
+                                                <a href="{% url 'crafts_by_state' 'Andhra Pradesh' %}" class="btn btn-primary">ಹೆಚ್ಚು ನೋಡಿ" </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Jammu & Kashmir Product -->
+                                <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+                                    <div class="block2">
+                                        <div class="block2-pic hov-img0">
+                                            <img src="{% static 'user/images/img36.jpg' %}" alt="Pashmina Shawls" class="handmade-product-img3">
+                                            
+                                        </div>
+                                        <div class="block2-txt flex-w flex-t p-t-14">
+                                            <div class="block2-txt-child1 flex-col-l ">
+                                                
+                                                <span class="stext-105 cl3">
+                                                    ರಾಜಸ್ಥಾನ
+                                                </span>
+                                            </div>
+                                            <div class="block2-txt-child2 flex-r p-t-3">
+                                                <a href="{% url 'crafts_by_state' 'Rajasthan' %}" class="btn btn-primary">ಹೆಚ್ಚು ನೋಡಿ" </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </section>
+    
+    
+    
+    <!-- Footer -->
+    <footer class="bg3 p-t-75 p-b-32">
+        <div class="container">
+            <div class="row container text-center">
+                <div class="col-sm-6 col-lg-6 p-b-50">
+                    <h4 class="stext-301 cl0 p-b-30">
+                        ಲಿಂಕುಗಳು
+                    </h4>
+                    
+                    <ul>
+                        <li class="p-b-10">
+                            <a href="{% url 'user_dashboard' %}" class="stext-107 cl7 hov-cl1 trans-04">
+                                ಡ್ಯಾಶ್‌ಬೋರ್ಡ್
+                            </a>
+                        </li>
+                        
+                        <li class="p-b-10">
+                            <a href="{% url 'user_explore' %}" class="stext-107 cl7 hov-cl1 trans-04">
+                                ಅನ್ವೇಷಿಸಿ
+                            </a>
+                        </li>
+                        
+                        <li class="p-b-10">
+                            <a href="{% url 'my_orders' %}" class="stext-107 cl7 hov-cl1 trans-04">
+                                ನನ್ನ ಆದೇಶಗಳು
+                            </a>
+                        </li>
+                        
+                        <li class="p-b-10">
+                            <a href="{% url 'my_purchases' %}" class="stext-107 cl7 hov-cl1 trans-04">
+                                ನನ್ನ ಖರಿದುಗಳು
+                            </a>
+                        </li>
+                        <li class="p-b-10">
+                            <a href="{% url 'my_profile' %}" class="stext-107 cl7 hov-cl1 trans-04">
+                                ನನ್ನ ಪ್ರೊಫೈಲ್
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                
+                <div class="col-sm-6 col-lg-6 p-b-50 text-center">
+                    <h4 class="stext-301 cl0 p-b-30">
+                        ಸಂಪರ್ಕಿಸಿ
+                    </h4>
+                    
+                    <div class="">
+                        <p class="stext-107 cl7 size-201 mx-auto">
+                            #2ನೇ ಮಹಡಿ, ಸಿರಿಸ್ ರಸ್ತೆ, ಎಲ್.ಬಿ ನಗರ ಮೆಟ್ರೊ ಸ್ಟೇಷನ್ ಸ್ತಂಭ ಸಂಖ್ಯೆ, A1662, ಸ್ನೇಹಪುರಿ ಕಾಲೋನಿ, ಹೈದರಾಬಾದ್, ತೆಲಂಗಾಣ 500074
+                        </p>
+                    </div>
+                    
+                    <div class="p-t-27">
+                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        
+                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        
+                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                            <i class="fa fa-pinterest-p"></i>
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="p-t-40">
+                
+                
+                <p class="stext-107 cl6 txt-center">
+                    <!-- Colorlib ಗೆ ಮರಳುವ ಲಿಂಕನ್ನು ತೆಗೆದುಹಾಕಲಾಗಲು ಅನುಮತಿಸಲಾಗಿಲ್ಲ. ಟೆಂಪ್ಲೇಟ್‌ನು CC BY 3.0 ಅಡಿಯಲ್ಲಿ ಲೈಸೆನ್ಸ್ ಮಾಡಲಾಗಿದೆ. -->
+                    ಪ್ರತಿಯೊಂದು ಹಕ್ಕು ಕಾಯ್ದಿರುವದು | <i class="fa fa-heart-o" aria-hidden="true"></i> ನಿರ್ಮಾಣ: <a href="https://codeleaf.in" target="_blank">ಕೋಡ್ಬುಕ್</a>
+                    <!-- Colorlib ಗೆ ಮರಳುವ ಲಿಂಕನ್ನು ತೆಗೆದುಹಾಕಲಾಗಲು ಅನುಮತಿಸಲಾಗಿಲ್ಲ. ಟೆಂಪ್ಲೇಟ್‌ನು CC BY 3.0 ಅಡಿಯಲ್ಲಿ ಲೈಸೆನ್ಸ್ ಮಾಡಲಾಗಿದೆ. -->
+                </p>
+                
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to top -->
+    <div class="btn-back-to-top" id="myBtn">
+        <span class="symbol-btn-back-to-top">
+            <i class="zmdi zmdi-chevron-up"></i>
+        </span>
+    </div>
+   
+    
+    <div id="languageSwitchBtn" onclick="showLanguageModal()">Lan</div>
+    
+    <div id="languageModal">
+        <a href="{% url 'user_dashboard' %}"><div class="languageOption" onclick="selectLanguage('English')">En</div></a>
+        <a href="{% url 'hindi' %}"><div class="languageOption" onclick="selectLanguage('Hindi')">Hin</div></a>
+        <a href="{% url 'telugu' %}"><div class="languageOption" onclick="selectLanguage('Telugu')">Tel</div></a>
+        <a href="{% url 'tamil' %}"><div class="languageOption" onclick="selectLanguage('Tamil')">Tam</div></a>
+        <a href="{% url 'kannnada' %}"><div class="languageOption" onclick="selectLanguage('Kannada')">Kan</div></a>
+    </div>
+    
+    <script>
+        function showLanguageModal() {
+            var modal = document.getElementById('languageModal');
+            modal.style.display = 'block';
+        }
+        
+        function selectLanguage(language) {
+            alert('Selected language: ' + language); 
+            var modal = document.getElementById('languageModal');
+            modal.style.display = 'none';
+        }
+        
+        window.onclick = function(event) {
+            var modal = document.getElementById('languageModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+    
+    
+    <script src="{% static 'user/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'user/vendor/animsition/js/animsition.min.js' %}"></script>
+    <script src="{% static 'user/vendor/bootstrap/js/popper.js' %}"></script>
+    <script src="{% static 'user/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'user/vendor/select2/select2.min.js' %}"></script>
+    <script>
+        $(".js-select2").each(function(){
+            $(this).select2({
+                minimumResultsForSearch: 20,
+                dropdownParent: $(this).next('.dropDownSelect2')
+            });
+        })
+    </script>
+    <!--===============================================================================================-->
+    <script src="{% static 'user/vendor/daterangepicker/moment.min.js' %}"></script>
+    <script src="{% static 'user/vendor/daterangepicker/daterangepicker.js' %}"></script>
+    
+    <!--===============================================================================================-->
+    <script src="{% static 'user/vendor/slick/slick.min.js' %}"></script>
+    <script src="{% static 'user/js/slick-custom.js' %}"></script>
+    
+    <!--===============================================================================================-->
+    <script src="{% static 'user/vendor/parallax100/parallax100.js' %}"></script>
+    
+    <script>
+        $('.parallax100').parallax100();
+    </script>
+    <!--===============================================================================================-->
+    <script src="{% static 'user/vendor/MagnificPopup/jquery.magnific-popup.min.js' %}"></script>
+    <script>
+        $('.gallery-lb').each(function() { // the containers for all your galleries
+            $(this).magnificPopup({
+                delegate: 'a', // the selector for gallery item
+                type: 'image',
+                gallery: {
+                    enabled:true
+                },
+                mainClass: 'mfp-fade'
+            });
+        });
+    </script>
+    <!--===============================================================================================-->
+    <script src="{% static 'user/vendor/isotope/isotope.pkgd.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'user/vendor/sweetalert/sweetalert.min.js' %}"></script>
+    
+    <script>
+        $('.js-addwish-b2').on('click', function(e){
+            e.preventDefault();
+        });
+        
+        $('.js-addwish-b2').each(function(){
+            var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+            $(this).on('click', function(){
+                swal(nameProduct, "is added to wishlist !", "success");
+                
+                $(this).addClass('js-addedwish-b2');
+                $(this).off('click');
+            });
+        });
+        
+        $('.js-addwish-detail').each(function(){
+            var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+            
+            $(this).on('click', function(){
+                swal(nameProduct, "is added to wishlist !", "success");
+                
+                $(this).addClass('js-addedwish-detail');
+                $(this).off('click');
+            });
+        });
+        
+        /*---------------------------------------------*/
+        
+        $('.js-addcart-detail').each(function(){
+            var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+            $(this).on('click', function(){
+                swal(nameProduct, "is added to cart !", "success");
+            });
+        });
+    </script>
+    <!--===============================================================================================-->
+    <script src="{% static 'user/vendor/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+    <script>
+        $('.js-pscroll').each(function(){
+            $(this).css('position','relative');
+            $(this).css('overflow','hidden');
+            var ps = new PerfectScrollbar(this, {
+                wheelSpeed: 1,
+                scrollingThreshold: 1000,
+                wheelPropagation: false,
+            });
+            
+            $(window).on('resize', function(){
+                ps.update();
+            })
+        });
+    </script>
+    <!--===============================================================================================-->
+    <script src="{% static 'user/js/main.js' %}"></script>
+    
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+{% if messages %}
+{% for message in messages %}
+{% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+<script>
+    swal({
+        title: "Warning!",
+        text: "{{ message }}",
+        icon: "warning",
+        button: "OK",
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+<script>
+    swal({
+        title: "Info :)",
+        text: "{{ message }}",
+        icon: "info",
+        button: "OK",
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+<script>
+    swal({
+        title: "Error :)",
+        text: "{{ message }}",
+        icon: "error",
+        button: "OK",
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+<script>
+    swal({
+        title: "Success :)",
+        text: "{{ message }}",
+        icon: "success",
+        button: "OK",
+    });
+</script>
+{% endif %}
+{% endfor %}
+{% endif %}
+</html>

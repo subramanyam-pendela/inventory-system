@@ -1,0 +1,510 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Inventory Management
+</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="icon" type="image/png" href="{% static 'user/images/icons/favicon.png' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/fonts/iconic/css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/fonts/linearicons-v1.0.0/icon-font.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/vendor/animate/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/vendor/css-hamburgers/hamburgers.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/vendor/animsition/css/animsition.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/vendor/select2/select2.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/vendor/daterangepicker/daterangepicker.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/vendor/slick/slick.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/vendor/MagnificPopup/magnific-popup.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/css/main.css' %}">
+    <style>
+        .unique-table {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .unique-table thead {
+            background-color: #2a8500;
+            color: #ffffff;
+        }
+        .unique-table th,
+        .unique-table td {
+            padding: 15px;
+            text-align: left;
+        }
+        .unique-table tbody tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+        .unique-table tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: #fff;
+        }
+        .status.pending {
+            background-color: #f0ad4e; /* Bootstrap warning color */
+        }
+        
+        /* CSS adjustments */
+        
+        .content-section {
+            min-height: calc(100vh - 200px); 
+            padding-bottom: 50px; /* This ensures there is space above the footer */
+        }
+        
+        .site-footer {
+            width: 100%;
+            position: relative; /* if your footer should not be fixed at the bottom */
+            clear: both; /* This ensures the footer stays below all content */
+        }
+        
+        /* Make sure your table does not exceed the viewport height */
+        .unique-table {
+            width: 100%;
+            margin-bottom: 50px; /* This adds space between the table and the footer */
+            /* ... other styles ... */
+        }
+        
+        /* Add this to make sure the table does not overflow the page */
+        .table-responsive-md {
+            overflow-x: auto; /* Adjust as needed for your design */
+        }
+        
+    </style>
+</head>
+<body class="animsition">
+    
+    <!-- Header -->
+    <header class="header-v2">
+        <!-- Header desktop -->
+        <div class="container-menu-desktop trans-03">
+            <div class="wrap-menu-desktop">
+                <nav class="limiter-menu-desktop p-l-45">
+                    
+                    <!-- Logo desktop -->		
+                    <a href="#" class="logo">
+                        <h1 style="font-size: 27px;font-weight: bolder;"><span style="color: #0a0908;" >Inventory</span> Management</h1>
+                    </a>
+                    
+                    <!-- Menu desktop -->
+                    <div class="menu-desktop">
+                        <ul class="main-menu">
+                            <li>
+                                <a href="{% url 'user_dashboard' %}">Dasboard</a>
+                            </li>
+                            
+                            <li>
+                                <a href="{% url 'user_explore' %}">Explore</a>
+                            </li>
+                            
+                            <li  class="active-menu">
+                                <a href="">My Account </a>
+                                <ul class="sub-menu">
+                                    <li><a href="{% url 'my_purchases' %}">My purchases</a></li>
+                                    <li><a href="{% url 'my_orders' %}" >MY Orders</a></li>
+                                </ul>
+                            </li>
+                            
+                            <li  >
+                                <a href="{% url 'my_profile' %}">My Profile </a>
+                            </li>
+                            <li>
+								<a href="{% url 'user_chatbot' %}">Chatbot </a>
+							</li>
+                            <li>
+                                <a href="{% url 'user_logout' %}">Logout </a>
+                            </li>
+                            
+                        </ul>
+                    </div>	
+                    
+                    <!-- Icon header -->
+                    <div class="wrap-icon-header flex-w flex-r-m h-full mr-5">
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart " data-notify="{{ cart_item_count }}">
+                            <a href="{% url 'cart' %}"><i class="zmdi zmdi-shopping-cart"></i></a>
+                        </div>
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-wishlist mr-4" data-notify="{{ wishlist_item_count }}">
+                            <a href="{% url 'wishlist' %}"><i class="zmdi zmdi-favorite-outline"></i></a>
+                        </div>
+                        
+                        <a href="{% url 'seller_dashboard' %}" class="relative inline-block px-4 py-2 font-medium text-white bg-red-600 border border-gray-300 rounded-md hover:bg-indigo-600 hover:text-white hover:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 transition-all duration-300 ease-in-out">
+                            Sell a Product
+                        </a>
+                    </div>
+                </nav>
+            </div>	
+        </div>
+        
+        <!-- Header Mobile -->
+        <div class="wrap-header-mobile">
+            <!-- Logo moblie -->		
+            <div class="logo-mobile">
+                <a href="index.html"><h1 style="font-size: 27px;font-weight: bolder;"><span style="color: #0a0908;" >Inventory</span> Management</h1></a>
+            </div>
+            
+            <!-- Icon header -->
+            <div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart mx-2" data-notify="2">
+                    <a href="{% url 'cart' %}"><i class="zmdi zmdi-shopping-cart"></i></a>
+                </div>
+                <a href="user-login.html" class="relative inline-block px-4 py-2 font-medium text-white bg-red-600 border border-gray-300 rounded-md hover:bg-indigo-600 hover:text-white hover:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 transition-all duration-300 ease-in-out">
+                    LOGOUT
+                </a>
+                
+            </div>
+            
+            <!-- Button show menu -->
+            <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </div>
+        </div>
+        
+        
+        <!-- Menu Mobile -->
+        <div class="menu-mobile">
+            <ul class="main-menu-m">
+                <li>
+                    <a href="user-dashboard.html">Home</a>
+                </li>
+                
+                <li>
+                    <a href="{% url 'user_explore' %}">Explore</a>
+                </li>
+                
+                <li>
+                    <a href="">My Account </a>
+                    <ul class="sub-menu">
+                        <li><a href="{% url 'my_purchases' %}">My purchases</a></li>
+                        <li><a href="{% url 'my_orders' %}" >MY Orders</a></li>
+                    </ul>
+                </li>
+                
+                <li   class="active-menu">
+                    <a href="{% url 'my_profile' %}">My Profile </a>
+                </li>
+                <li>
+                    <a href="{% url 'user_logout' %}">Logout </a>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Modal Search -->
+        <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+            <div class="container-search-header">
+                <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+                    <img src="{% static 'user/images/icons/icon-close2.png' %}" alt="CLOSE">
+                    
+                </button>
+                
+                <form class="wrap-search-header flex-w p-l-15">
+                    <button class="flex-c-m trans-04">
+                        <i class="zmdi zmdi-search"></i>
+                    </button>
+                    <input class="plh3" type="text" name="search" placeholder="Search...">
+                </form>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Sidebar -->
+    
+    
+    
+    
+    <!-- Slider -->
+    <section class="content-section">
+        <div class="container">
+            <div class="card text-center mb-5">
+                <div class="card-header" style="background-color: #0a0908; color: white; font-size: 32px;">
+                    Order Overview
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Stay Updated with Your Orders</h5>
+                    <p class="card-text">Here, you can easily track all your orders along with their current statuses. Stay informed about every step of your order process, from confirmation to completion.</p>
+                </div>
+            </div>
+            <table class="table table-responsive-md unique-table mb-5">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Products</th>
+                        <th>Order Date</th>
+                        <th>Image</th>
+                        <th>Order Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    {% for item in order.orderitem_set.all %}
+                    <tr>
+                        <td>{{ order.id }}</td>
+                        <td>{{ item.craft.name }}</td>
+                        <td>{{ order.created_at }}</td>
+                        <td><img src="{{ item.craft.image.url }}" alt="" width="100px"></td>
+                        <td>
+                            {% if order.delivery_status == 'pending' %}
+                            <span class="badge badge-warning">In Transit</span>
+                            {% elif order.delivery_status == 'completed' %}
+                            <span class="badge badge-success">Order Delivered</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% empty %}
+                    <tr>
+                        <td colspan="6">You have no orders.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+        </div>
+        
+    </section>
+    
+    
+    
+    
+    <footer class="bg3 p-t-75 p-b-32">
+		<div class="container">
+			<div class="row container text-center">
+				<div class="col-sm-6 col-lg-6 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+						links
+					</h4>
+					
+					<ul>
+						<li class="p-b-10">
+							<a href="{% url 'user_dashboard' %}" class="stext-107 cl7 hov-cl1 trans-04">
+								Dashboard
+							</a>
+						</li>
+						
+						<li class="p-b-10">
+							<a href="{% url 'user_explore' %}" class="stext-107 cl7 hov-cl1 trans-04">
+								Explore
+							</a>
+						</li>
+						
+						<li class="p-b-10">
+							<a href="{% url 'my_orders' %}" class="stext-107 cl7 hov-cl1 trans-04">
+								My-orders
+							</a>
+						</li>
+						
+						<li class="p-b-10">
+							<a href="{% url 'my_purchases' %}" class="stext-107 cl7 hov-cl1 trans-04">
+								My-purchases
+							</a>
+						</li>
+						<li class="p-b-10">
+							<a href="{% url 'my_profile' %}" class="stext-107 cl7 hov-cl1 trans-04">
+								My-profile
+							</a>
+						</li>
+					</ul>
+				</div>
+				
+				
+				
+				<div class="col-sm-6 col-lg-6 p-b-50 text-center">
+					<h4 class="stext-301 cl0 p-b-30">
+						GET IN TOUCH
+					</h4>
+					
+					<div class="">
+						<p class="stext-107 cl7 size-201 mx-auto">
+							New Gayatri Nagar, Lb Nagar Hyderabad.
+						</p>
+					</div>
+					
+					<div class="p-t-27">
+						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-facebook"></i>
+						</a>
+						
+						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-instagram"></i>
+						</a>
+						
+						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-pinterest-p"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+			
+			<div class="p-t-40">
+				
+				
+				<p class="stext-107 cl6 txt-center">
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://codeleaf.in" target="_blank">codeleaf</a>
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					
+				</p>
+			</div>
+		</div>
+	</footer>
+    
+    
+    <script src="{% static 'user/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'user/vendor/animsition/js/animsition.min.js' %}"></script>
+    <script src="{% static 'user/vendor/bootstrap/js/popper.js' %}"></script>
+    <script src="{% static 'user/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'user/vendor/select2/select2.min.js' %}"></script>
+    <script>
+        $(".js-select2").each(function(){
+            $(this).select2({
+                minimumResultsForSearch: 20,
+                dropdownParent: $(this).next('.dropDownSelect2')
+            });
+        })
+    </script>
+    <!--===============================================================================================-->
+    <script src="{% static 'user/vendor/daterangepicker/moment.min.js' %}"></script>
+    <script src="{% static 'user/vendor/daterangepicker/daterangepicker.js' %}"></script>
+    
+    <!--===============================================================================================-->
+    <script src="{% static 'user/vendor/slick/slick.min.js' %}"></script>
+    <script src="{% static 'user/js/slick-custom.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'user/vendor/parallax100/parallax100.js' %}"></script>
+    
+    <script>
+        $('.parallax100').parallax100();
+    </script>
+    <!--===============================================================================================-->
+    <script src="{% static 'user/vendor/MagnificPopup/jquery.magnific-popup.min.js' %}"></script>
+    <script>
+        $('.gallery-lb').each(function() { // the containers for all your galleries
+            $(this).magnificPopup({
+                delegate: 'a', // the selector for gallery item
+                type: 'image',
+                gallery: {
+                    enabled:true
+                },
+                mainClass: 'mfp-fade'
+            });
+        });
+    </script>
+    <script src="{% static 'user/vendor/isotope/isotope.pkgd.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'user/vendor/sweetalert/sweetalert.min.js' %}"></script>
+    <script>
+        $('.js-addwish-b2').on('click', function(e){
+            e.preventDefault();
+        });
+        
+        $('.js-addwish-b2').each(function(){
+            var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+            $(this).on('click', function(){
+                swal(nameProduct, "is added to wishlist !", "success");
+                
+                $(this).addClass('js-addedwish-b2');
+                $(this).off('click');
+            });
+        });
+        
+        $('.js-addwish-detail').each(function(){
+            var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+            
+            $(this).on('click', function(){
+                swal(nameProduct, "is added to wishlist !", "success");
+                
+                $(this).addClass('js-addedwish-detail');
+                $(this).off('click');
+            });
+        });
+        
+        /*---------------------------------------------*/
+        
+        $('.js-addcart-detail').each(function(){
+            var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+            $(this).on('click', function(){
+                swal(nameProduct, "is added to cart !", "success");
+            });
+        });
+    </script>
+    <!--===============================================================================================-->
+    <script src="{% static 'user/vendor/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+    <script>
+        $('.js-pscroll').each(function(){
+            $(this).css('position','relative');
+            $(this).css('overflow','hidden');
+            var ps = new PerfectScrollbar(this, {
+                wheelSpeed: 1,
+                scrollingThreshold: 1000,
+                wheelPropagation: false,
+            });
+            
+            $(window).on('resize', function(){
+                ps.update();
+            })
+        });
+    </script>
+    <!--===============================================================================================-->
+    <script src="{% static 'user/js/main.js' %}"></script>
+    
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+{% if messages %}
+{% for message in messages %}
+{% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+<script>
+    swal({
+        title: "Warning!",
+        text: "{{ message }}",
+        icon: "warning",
+        button: "OK",
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+<script>
+    swal({
+        title: "Info :)",
+        text: "{{ message }}",
+        icon: "info",
+        button: "OK",
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+<script>
+    swal({
+        title: "Error :)",
+        text: "{{ message }}",
+        icon: "error",
+        button: "OK",
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+<script>
+    swal({
+        title: "Success :)",
+        text: "{{ message }}",
+        icon: "success",
+        button: "OK",
+    });
+</script>
+{% endif %}
+{% endfor %}
+{% endif %}
+</html>

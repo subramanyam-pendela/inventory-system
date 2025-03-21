@@ -1,0 +1,937 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Inventory Management
+</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="icon" type="image/png" href="{% static 'user/images/icons/favicon.png' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/fonts/iconic/css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/fonts/linearicons-v1.0.0/icon-font.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/vendor/animate/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/vendor/css-hamburgers/hamburgers.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/vendor/animsition/css/animsition.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/vendor/select2/select2.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/vendor/daterangepicker/daterangepicker.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/vendor/slick/slick.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/vendor/MagnificPopup/magnific-popup.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'user/css/main.css' %}">
+    <style>
+        .bg-white.rounded-lg.overflow-hidden.shadow-lg {
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            will-change: transform, box-shadow;
+            position: relative;
+            overflow: visible;
+        }
+        
+        .bg-white.rounded-lg.overflow-hidden.shadow-lg:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.7);
+            animation: pulse 1.5s infinite;
+        }
+        
+        .bg-white.rounded-lg.overflow-hidden.shadow-lg:hover img {
+            transform: scale(1);
+        }
+        
+        .bg-white.rounded-lg.overflow-hidden.shadow-lg button {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: color 0.3s ease;
+            color: transparent;
+            background-clip: text;
+        }
+        
+        .bg-white.rounded-lg.overflow-hidden.shadow-lg button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #6A5ACD, #00BFFF);
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+            border-radius: 8px;
+        }
+        
+        
+        .bg-white.rounded-lg.overflow-hidden.shadow-lg:hover button:before {
+            opacity: 1;
+        }
+        
+        .bg-white.rounded-lg.overflow-hidden.shadow-lg:hover button {
+            color: white;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(0.98);
+                box-shadow: 0 0 0 0 rgba(106, 90, 205, 0.7);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 10px rgba(106, 90, 205, 0);
+            }
+            100% {
+                transform: scale(0.98);
+                box-shadow: 0 0 0 0 rgba(106, 90, 205, 0);
+            }
+        }
+        
+        .bg-white.rounded-lg.overflow-hidden.shadow-lg:hover button {
+            animation: pulse 1.5s infinite;
+        }
+        a.btn:hover {
+            animation: pulse 1.5s infinite;
+        }
+    </style>
+</head>
+<body class="animsition">
+    
+    <!-- Header -->
+    <header class="header-v2">
+        <!-- Header desktop -->
+        <div class="container-menu-desktop trans-03">
+            <div class="wrap-menu-desktop">
+                <nav class="limiter-menu-desktop p-l-45">
+                    
+                    <!-- Logo desktop -->		
+                    <a href="#" class="logo">
+                        <h1 style="font-size: 27px;font-weight: bolder;"><span style="color: #0a0908;" >Inventory</span> Management</h1>
+                    </a>
+                    
+                    <!-- Menu desktop -->
+                    <div class="menu-desktop">
+                        <ul class="main-menu">
+                            <li>
+                                <a href="{% url 'user_dashboard' %}">Dasboard</a>
+                            </li>
+                            
+                            <li  class="active-menu">
+                                <a href="{% url 'user_explore' %}">Explore</a>
+                            </li>
+                            
+                            <li>
+                                <a href="">My Account </a>
+                                <ul class="sub-menu">
+                                    <li><a href="{% url 'my_purchases' %}">My purchases</a></li>
+                                    <li><a href="{% url 'my_orders' %}" >MY Orders</a></li>
+                                </ul>
+                            </li>
+                            
+                            <li>
+                                <a href="{% url 'my_profile' %}">My Profile </a>
+                            </li>
+                            <li>
+								<a href="{% url 'user_chatbot' %}">Chatbot </a>
+							</li>
+                            <li>
+                                <a href="{% url 'user_logout' %}">Logout </a>
+                            </li>
+                            
+                        </ul>
+                    </div>	
+                    
+                    <!-- Icon header -->
+                    <div class="wrap-icon-header flex-w flex-r-m h-full mr-5">
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart " data-notify="{{ cart_item_count }}">
+                            <a href="{% url 'cart' %}"><i class="zmdi zmdi-shopping-cart"></i></a>
+                        </div>
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-wishlist mr-4" data-notify="{{ wishlist_item_count }}">
+                            <a href="{% url 'wishlist' %}"><i class="zmdi zmdi-favorite-outline"></i></a>
+                        </div>
+                        
+                        <a href="{% url 'seller_dashboard' %}" class="relative inline-block px-4 py-2 font-medium text-white bg-red-600 border border-gray-300 rounded-md hover:bg-indigo-600 hover:text-white hover:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 transition-all duration-300 ease-in-out">
+                            Sell a Product
+                        </a>
+                    </div>
+                </nav>
+            </div>	
+        </div>
+        
+        <!-- Header Mobile -->
+        <div class="wrap-header-mobile">
+            <!-- Logo moblie -->		
+            <div class="logo-mobile">
+                <a href="index.html"><h1 style="font-size: 27px;font-weight: bolder;"><span style="color: #0a0908;" >Inventory</span> Management</h1></a>
+            </div>
+            
+            <!-- Icon header -->
+            <div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart mx-2" data-notify="2">
+                    <a href="{% url 'cart' %}"><i class="zmdi zmdi-shopping-cart"></i></a>
+                </div>
+                <a href="user-login.html" class="relative inline-block px-4 py-2 font-medium text-white bg-red-600 border border-gray-300 rounded-md hover:bg-indigo-600 hover:text-white hover:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 transition-all duration-300 ease-in-out">
+                    LOGOUT
+                </a>
+                
+            </div>
+            
+            <!-- Button show menu -->
+            <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </div>
+        </div>
+        
+        
+        <!-- Menu Mobile -->
+        <div class="menu-mobile">
+            <ul class="main-menu-m">
+                <li>
+                    <a href="user-dashboard.html">Home</a>
+                </li>
+                
+                <li  class="active-menu">
+                    <a href="{% url 'user_explore' %}">Explore</a>
+                </li>
+                
+                <li>
+                    <a href="">My Account </a>
+                    <ul class="sub-menu">
+                        <li><a href="{% url 'my_purchases' %}">My purchases</a></li>
+                        <li><a href="{% url 'my_orders' %}" >MY Orders</a></li>
+                    </ul>
+                </li>
+                
+                <li  >
+                    <a href="{% url 'my_profile' %}">My Profile </a>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Modal Search -->
+        <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+            <div class="container-search-header">
+                <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+                    <img src="{% static 'user/images/icons/icon-close2.png' %}" alt="CLOSE">
+                    
+                </button>
+                
+                <form class="wrap-search-header flex-w p-l-15">
+                    <button class="flex-c-m trans-04">
+                        <i class="zmdi zmdi-search"></i>
+                    </button>
+                    <input class="plh3" type="text" name="search" placeholder="Search...">
+                </form>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Sidebar -->
+    
+    
+    
+    
+    <!-- Slider -->
+    <div class="sec-banner bg0 p-b-55">
+        <div class="card text-center mb-5 mt-2">
+            <div class="card-header mb-3" style="background-color: #0a0908; color: white; font-size: 32px;">
+                States of Craft: India's Cultural Mosaic
+            </div>
+            <div class="card-body" style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+                <h5 class="card-title" style="font-family: 'Montserrat', sans-serif; font-size: 24px; color: #333; margin-bottom: 10px;">Journey Through India's States and Their Artisanal Marvels</h5>
+                <p class="card-text" style="font-family: 'Roboto', sans-serif; font-size: 16px; color: #666; line-height: 1.6;">Embark on a captivating exploration of India's states, each a realm of diverse crafts and traditions. This platform brings you the heart of India's artistic heritage, from Rajasthan's vibrant textiles to Bengal's delicate terracotta. Discover the unique crafts that define each state and celebrate the stories of skill, tradition, and legacy they carry.</p>
+            </div>
+            
+        </div>
+        <div class="container">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Andhra Pradesh -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img32.jpg' %}" alt="Kalamkari Art" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Andhra Pradesh</h3>
+                        <p class="text-gray-700">Famous for Kalamkari, an ancient style of hand painting done on cotton or silk fabric with a tamarind pen, using natural dyes.</p>
+                        <a href="{% url 'crafts_by_state' 'Andhra Pradesh' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                
+                <!-- Arunachal Pradesh -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img37.jpg' %}" alt="Bamboo Handicrafts" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Arunachal Pradesh</h3>
+                        <p class="text-gray-700">Renowned for its bamboo and cane handicrafts, contributing significantly to the state's economy and culture.</p>
+                        <a href="{% url 'crafts_by_state' 'Arunachal Pradesh' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                
+                <!-- Assam -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img38.jpg' %}" alt="Assam Silk" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Assam</h3>
+                        <p class="text-gray-700">Famous for Assam Silk, especially Muga silk, which is exclusive to this state and known for its durability and natural golden sheen.</p>
+                        <a href="{% url 'crafts_by_state' 'Assam' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                
+                <!-- Bihar -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img39.webp' %}" alt="Madhubani Painting" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Bihar</h3>
+                        <p class="text-gray-700">Known for Madhubani painting, a style of Indian painting, practiced in the Mithila region of Bihar.</p>
+                        <a href="{% url 'crafts_by_state' 'Bihar' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                
+                <!-- Chhattisgarh -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img40.jpg' %}" alt="Dhokra Art" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Chhattisgarh</h3>
+                        <p class="text-gray-700">Famous for Dhokra Art, a non–ferrous metal casting using the lost-wax casting technique, this form of metal art is unique to Chhattisgarh.</p>
+                        <a href="{% url 'crafts_by_state' 'Chhattisgarh' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                
+                <!-- Goa -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img41.webp' %}" alt="Goan Pottery" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Goa</h3>
+                        <p class="text-gray-700">Renowned for its traditional pottery and terracotta crafts, drawing inspiration from Portuguese culture.</p>
+                        <a href="{% url 'crafts_by_state' 'Goa' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                
+                <!-- Gujarat -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img42.jpg' %}" alt="Bandhani Textiles" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Gujarat</h3>
+                        <p class="text-gray-700">Famous for Bandhani, a traditional form of tie and dye techniques, and Kutch embroidery.</p>
+                        <a href="{% url 'crafts_by_state' 'Gujarat' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                
+                <!-- Haryana -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img43.avif' %}" alt="Phulkari Embroidery" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Haryana</h3>
+                        <p class="text-gray-700">Known for Phulkari, an embroidery technique that means 'flower work', which is traditionally done on dupattas, shawls, and lehengas.</p>
+                        <a href="{% url 'crafts_by_state' 'Haryana' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img44.webp' %}" alt="Himachali Caps" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Himachal Pradesh</h3>
+                        <p class="text-gray-700">Known for its Himachali caps and shawls, showcasing rich embroidery and vibrant colors.</p>
+                        <a href="{% url 'crafts_by_state' 'Himachal Pradesh' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                
+                <!-- Jharkhand -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img45.jpg' %}" alt="Dhokra Art" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Jharkhand</h3>
+                        <p class="text-gray-700">Celebrated for its Dhokra art and tribal paintings, reflecting the rich cultural heritage.</p>
+                        <a href="{% url 'crafts_by_state' 'Jharkhand' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                
+                <!-- Jammu and Kashmir -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img65.jpg' %}" alt="Kashmiri Shawls" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Jammu and Kashmir</h3>
+                        <p class="text-gray-700">Famous for its exquisite Pashmina shawls and handwoven carpets, showcasing intricate traditional Persian and Mughal designs.</p>
+                        <a href="{% url 'crafts_by_state' 'Jammu and Kashmir' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                <!-- Karnataka -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img46.jpg' %}" alt="Mysore Silk" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Karnataka</h3>
+                        <p class="text-gray-700">Famous for Mysore Silk and sandalwood carvings, epitomizing elegance and craftsmanship.</p>
+                        <a href="{% url 'crafts_by_state' 'Karnataka' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                
+                <!-- Kerala -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img47.jpg' %}" alt="Kerala Handlooms" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Kerala</h3>
+                        <p class="text-gray-700">Renowned for its handloom fabrics, including the traditional Kasavu saree, symbolizing purity and elegance.</p>
+                        <a href="{% url 'crafts_by_state' 'Kerala' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                
+                <!-- Madhya Pradesh -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img48.jpg' %}" alt="Chanderi Fabric" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Madhya Pradesh</h3>
+                        <p class="text-gray-700">Known for Chanderi and Maheshwari fabrics, showcasing the finesse of silk and cotton weaves.</p>
+                        <a href="{% url 'crafts_by_state' 'Madhya Pradesh' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                
+                <!-- Maharashtra -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img49.jpg' %}" alt="Paithani Sarees" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Maharashtra</h3>
+                        <p class="text-gray-700">Famous for Paithani sarees and Warli painting, symbolizing Maharashtra's cultural legacy.</p>
+                        <a href="{% url 'crafts_by_state' 'Maharashtra' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                
+                <!-- Manipur -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img50.jpg' %}" alt="Handloom Weaving" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Manipur</h3>
+                        <p class="text-gray-700">Renowned for its handloom weaving and traditional crafts like pottery and bamboo work.</p>
+                        <a href="{% url 'crafts_by_state' 'Manipur' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                
+                <!-- Meghalaya -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img51.jpg' %}" alt="Meghalaya Silk" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Meghalaya</h3>
+                        <p class="text-gray-700">Known for its silk weaving, particularly Eri silk, contributing to the state's rich textile heritage.</p>
+                        <a href="{% url 'crafts_by_state' 'Meghalaya' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img52.jpeg' %}" alt="Mizo Puan" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Mizoram</h3>
+                        <p class="text-gray-700">Celebrated for Mizo Puan, traditional handwoven fabric known for its vibrant colors and patterns.</p>
+                        <a href="{% url 'crafts_by_state' 'Mizoram' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                
+                <!-- Nagaland -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img53.png' %}" alt="Naga Shawls" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Nagaland</h3>
+                        <p class="text-gray-700">Known for Naga shawls and traditional attire, each tribe with its unique designs and colors.</p>
+                        <a href="{% url 'crafts_by_state' 'Nagaland' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                
+                <!-- Odisha -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img54.jpg' %}" alt="Pattachitra Painting" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Odisha</h3>
+                        <p class="text-gray-700">Renowned for Pattachitra painting and intricate silver filigree work from Cuttack.</p>
+                        <a href="{% url 'crafts_by_state' 'Odisha' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                
+                <!-- Punjab -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img55.webp' %}" alt="Phulkari Embroidery" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Punjab</h3>
+                        <p class="text-gray-700">Famous for Phulkari embroidery, an integral part of Punjabi culture, characterized by vibrant floral motifs.</p>
+                        <a href="{% url 'crafts_by_state' 'Punjab' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                
+                <!-- Rajasthan -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img56.jpg' %}" alt="Rajasthani Miniature Paintings" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Rajasthan</h3>
+                        <p class="text-gray-700">Known for Rajasthani miniature paintings and exquisite jewelry, reflecting the royal heritage.</p>
+                        <a href="{% url 'crafts_by_state' 'Rajasthan' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                
+                <!-- Sikkim -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img57.jpg' %}" alt="Sikkimese Thangka" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Sikkim</h3>
+                        <p class="text-gray-700">Celebrated for Sikkimese Thangka painting, showcasing Buddhist religious themes in vibrant colors and gold.</p>
+                        <a href="{% url 'crafts_by_state' 'Sikkim' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                
+                <!-- Tamil Nadu -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img58.jpg' %}" alt="Tanjore Paintings" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Tamil Nadu</h3>
+                        <p class="text-gray-700">Famous for Tanjore paintings and intricate bronze sculptures, emblematic of Tamil Nadu's rich cultural tapestry.</p>
+                        <a href="{% url 'crafts_by_state' 'Tamil Nadu' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                
+                <!-- Telangana -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img59.jpeg' %}" alt="Pochampally Ikat" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Telangana</h3>
+                        <p class="text-gray-700">Renowned for Pochampally Ikat weaving, characterized by geometric patterns and vibrant colors.</p>
+                        <a href="{% url 'crafts_by_state' 'Telangana' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img60.jpg' %}" alt="Tripura Handloom" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Tripura</h3>
+                        <p class="text-gray-700">Famous for its bamboo and cane crafts, along with vibrant handloom weaving.</p>
+                        <a href="{% url 'crafts_by_state' 'Tripura' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                
+                <!-- Uttar Pradesh -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img61.jpg' %}" alt="Banarasi Sarees" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Uttar Pradesh</h3>
+                        <p class="text-gray-700">Renowned for Banarasi sarees, known worldwide for their gold and silver brocade or zari, fine silk and opulent embroidery.</p>
+                        <a href="{% url 'crafts_by_state' 'Uttar Pradesh' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                
+                <!-- Uttarakhand -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img62.jpeg' %}" alt="Woolen Garments" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Uttarakhand</h3>
+                        <p class="text-gray-700">Known for its woolen garments and traditional crafts like Aipan art, unique to this Himalayan state.</p>
+                        <a href="{% url 'crafts_by_state' 'Uttarakhand' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+                
+                <!-- West Bengal -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                    <img src="{% static 'user/images/img63.png' %}" alt="Kantha Stitch" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">West Bengal</h3>
+                        <p class="text-gray-700">Famous for its Kantha stitch, a form of embroidery often practiced by rural women.</p>
+                        <a href="{% url 'crafts_by_state' 'West Bengal' %}" class="btn mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-200">View</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    <!-- Footer -->
+    <footer class="bg3 p-t-75 p-b-32">
+        <div class="container">
+            <div class="row container text-center">
+                <div class="col-sm-6 col-lg-6 p-b-50">
+                    <h4 class="stext-301 cl0 p-b-30">
+                        links
+                    </h4>
+                    
+                    <ul>
+                        <li class="p-b-10">
+                            <a href="{% url 'user_dashboard' %}" class="stext-107 cl7 hov-cl1 trans-04">
+                                Dashboard
+                            </a>
+                        </li>
+                        
+                        <li class="p-b-10">
+                            <a href="{% url 'user_explore' %}" class="stext-107 cl7 hov-cl1 trans-04">
+                                Explore
+                            </a>
+                        </li>
+                        
+                        <li class="p-b-10">
+                            <a href="{% url 'my_orders' %}" class="stext-107 cl7 hov-cl1 trans-04">
+                                My-orders
+                            </a>
+                        </li>
+                        
+                        <li class="p-b-10">
+                            <a href="{% url 'my_purchases' %}" class="stext-107 cl7 hov-cl1 trans-04">
+                                My-purchases
+                            </a>
+                        </li>
+                        <li class="p-b-10">
+                            <a href="{% url 'my_profile' %}" class="stext-107 cl7 hov-cl1 trans-04">
+                                My-profile
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                
+                
+                <div class="col-sm-6 col-lg-6 p-b-50 text-center">
+                    <h4 class="stext-301 cl0 p-b-30">
+                        GET IN TOUCH
+                    </h4>
+                    
+                    <div class="">
+                        <p class="stext-107 cl7 size-201 mx-auto">
+                            New Gayatri Nagar, Lb Nagar Hyderabad.
+                        </p>
+                    </div>
+                    
+                    <div class="p-t-27">
+                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        
+                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        
+                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                            <i class="fa fa-pinterest-p"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-t-40">
+                
+                
+                <p class="stext-107 cl6 txt-center">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://codeleaf.in" target="_blank">codeleaf</a>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    
+    <!-- Back to top -->
+    <div class="btn-back-to-top" id="myBtn">
+        <span class="symbol-btn-back-to-top">
+            <i class="zmdi zmdi-chevron-up"></i>
+        </span>
+    </div>
+    
+    <!-- Modal1 -->
+    <div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
+        <div class="overlay-modal1 js-hide-modal1"></div>
+        
+        <div class="container">
+            <div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
+                <button class="how-pos3 hov3 trans-04 js-hide-modal1">
+                    <img src="images/icons/icon-close.png" alt="CLOSE">
+                </button>
+                
+                <div class="row">
+                    <div class="col-md-6 col-lg-7 p-b-30">
+                        <div class="p-l-25 p-r-30 p-lr-0-lg">
+                            <div class="wrap-slick3 flex-sb flex-w">
+                                <div class="wrap-slick3-dots"></div>
+                                <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
+                                
+                                <div class="slick3 gallery-lb">
+                                    <div class="item-slick3" data-thumb="images/product-detail-01.jpg">
+                                        <div class="wrap-pic-w pos-relative">
+                                            <img src="images/product-detail-01.jpg" alt="IMG-PRODUCT">
+                                            
+                                            <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-01.jpg">
+                                                <i class="fa fa-expand"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="item-slick3" data-thumb="images/product-detail-02.jpg">
+                                        <div class="wrap-pic-w pos-relative">
+                                            <img src="images/product-detail-02.jpg" alt="IMG-PRODUCT">
+                                            
+                                            <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-02.jpg">
+                                                <i class="fa fa-expand"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="item-slick3" data-thumb="images/product-detail-03.jpg">
+                                        <div class="wrap-pic-w pos-relative">
+                                            <img src="images/product-detail-03.jpg" alt="IMG-PRODUCT">
+                                            
+                                            <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-03.jpg">
+                                                <i class="fa fa-expand"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-5 p-b-30">
+                        <div class="p-r-50 p-t-5 p-lr-0-lg">
+                            <h4 class="mtext-105 cl2 js-name-detail p-b-14">
+                                Lightweight Jacket
+                            </h4>
+                            
+                            <span class="mtext-106 cl2">
+                                $58.79
+                            </span>
+                            
+                            <p class="stext-102 cl3 p-t-23">
+                                Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
+                            </p>
+                            
+                            <!--  -->
+                            <div class="p-t-33">
+                                <div class="flex-w flex-r-m p-b-10">
+                                    <div class="size-203 flex-c-m respon6">
+                                        Size
+                                    </div>
+                                    
+                                    <div class="size-204 respon6-next">
+                                        <div class="rs1-select2 bor8 bg0">
+                                            <select class="js-select2" name="time">
+                                                <option>Choose an option</option>
+                                                <option>Size S</option>
+                                                <option>Size M</option>
+                                                <option>Size L</option>
+                                                <option>Size XL</option>
+                                            </select>
+                                            <div class="dropDownSelect2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex-w flex-r-m p-b-10">
+                                    <div class="size-203 flex-c-m respon6">
+                                        Color
+                                    </div>
+                                    
+                                    <div class="size-204 respon6-next">
+                                        <div class="rs1-select2 bor8 bg0">
+                                            <select class="js-select2" name="time">
+                                                <option>Choose an option</option>
+                                                <option>Red</option>
+                                                <option>Blue</option>
+                                                <option>White</option>
+                                                <option>Grey</option>
+                                            </select>
+                                            <div class="dropDownSelect2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex-w flex-r-m p-b-10">
+                                    <div class="size-204 flex-w flex-m respon6-next">
+                                        <div class="wrap-num-product flex-w m-r-20 m-tb-10">
+                                            <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+                                                <i class="fs-16 zmdi zmdi-minus"></i>
+                                            </div>
+                                            
+                                            <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1">
+                                            
+                                            <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+                                                <i class="fs-16 zmdi zmdi-plus"></i>
+                                            </div>
+                                        </div>
+                                        
+                                        <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                                            Add to cart
+                                        </button>
+                                    </div>
+                                </div>	
+                            </div>
+                            
+                            <!--  -->
+                            <div class="flex-w flex-m p-l-100 p-t-40 respon7">
+                                <div class="flex-m bor9 p-r-10 m-r-11">
+                                    <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
+                                        <i class="zmdi zmdi-favorite"></i>
+                                    </a>
+                                </div>
+                                
+                                <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                                
+                                <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                                
+                                <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{% static 'user/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'user/vendor/animsition/js/animsition.min.js' %}"></script>
+    <script src="{% static 'user/vendor/bootstrap/js/popper.js' %}"></script>
+    <script src="{% static 'user/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'user/vendor/select2/select2.min.js' %}"></script>
+    <script>
+        $(".js-select2").each(function(){
+            $(this).select2({
+                minimumResultsForSearch: 20,
+                dropdownParent: $(this).next('.dropDownSelect2')
+            });
+        })
+    </script>
+    <!--===============================================================================================-->
+    <script src="{% static 'user/vendor/daterangepicker/moment.min.js' %}"></script>
+    <script src="{% static 'user/vendor/daterangepicker/daterangepicker.js' %}"></script>
+    
+    <!--===============================================================================================-->
+    <script src="{% static 'user/vendor/slick/slick.min.js' %}"></script>
+    <script src="{% static 'user/js/slick-custom.js' %}"></script>
+    
+    <!--===============================================================================================-->
+    <script src="{% static 'user/vendor/parallax100/parallax100.js' %}"></script>
+    
+    <script>
+        $('.parallax100').parallax100();
+    </script>
+    <!--===============================================================================================-->
+    <script src="{% static 'user/vendor/MagnificPopup/jquery.magnific-popup.min.js' %}"></script>
+    <script>
+        $('.gallery-lb').each(function() { // the containers for all your galleries
+            $(this).magnificPopup({
+                delegate: 'a', // the selector for gallery item
+                type: 'image',
+                gallery: {
+                    enabled:true
+                },
+                mainClass: 'mfp-fade'
+            });
+        });
+    </script>
+    <!--===============================================================================================-->
+    <script src="{% static 'user/vendor/isotope/isotope.pkgd.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'user/vendor/sweetalert/sweetalert.min.js' %}"></script>
+    <script>
+        $('.js-addwish-b2').on('click', function(e){
+            e.preventDefault();
+        });
+        
+        $('.js-addwish-b2').each(function(){
+            var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+            $(this).on('click', function(){
+                swal(nameProduct, "is added to wishlist !", "success");
+                
+                $(this).addClass('js-addedwish-b2');
+                $(this).off('click');
+            });
+        });
+        
+        $('.js-addwish-detail').each(function(){
+            var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+            
+            $(this).on('click', function(){
+                swal(nameProduct, "is added to wishlist !", "success");
+                
+                $(this).addClass('js-addedwish-detail');
+                $(this).off('click');
+            });
+        });
+        
+        /*---------------------------------------------*/
+        
+        $('.js-addcart-detail').each(function(){
+            var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+            $(this).on('click', function(){
+                swal(nameProduct, "is added to cart !", "success");
+            });
+        });
+    </script>
+    <!--===============================================================================================-->
+    <script src="{% static 'user/vendor/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+    <script>
+        $('.js-pscroll').each(function(){
+            $(this).css('position','relative');
+            $(this).css('overflow','hidden');
+            var ps = new PerfectScrollbar(this, {
+                wheelSpeed: 1,
+                scrollingThreshold: 1000,
+                wheelPropagation: false,
+            });
+            
+            $(window).on('resize', function(){
+                ps.update();
+            })
+        });
+    </script>
+    <!--===============================================================================================-->
+    <script src="{% static 'user/js/main.js' %}"></script>
+    
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+{% if messages %}
+{% for message in messages %}
+{% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+<script>
+    swal({
+        title: "Warning!",
+        text: "{{ message }}",
+        icon: "warning",
+        button: "OK",
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+<script>
+    swal({
+        title: "Info :)",
+        text: "{{ message }}",
+        icon: "info",
+        button: "OK",
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+<script>
+    swal({
+        title: "Error :)",
+        text: "{{ message }}",
+        icon: "error",
+        button: "OK",
+    });
+</script>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+<script>
+    swal({
+        title: "Success :)",
+        text: "{{ message }}",
+        icon: "success",
+        button: "OK",
+    });
+</script>
+{% endif %}
+{% endfor %}
+{% endif %}
+</html>

@@ -1,0 +1,398 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>About</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="icon" type="image/png" href="{% static 'user/images/icons/favicon.png' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/vendor/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/fonts/iconic/css/material-design-iconic-font.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/fonts/linearicons-v1.0.0/icon-font.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/vendor/animate/animate.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/vendor/css-hamburgers/hamburgers.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/vendor/animsition/css/animsition.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/vendor/select2/select2.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/vendor/daterangepicker/daterangepicker.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/vendor/slick/slick.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/vendor/MagnificPopup/magnific-popup.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/css/main.css' %}">
+    
+    <style>
+        .bg-purple-gradient {
+            background: linear-gradient(90deg, rgba(232, 232, 251, 1) 0%, rgba(250, 250, 250, 1) 100%);
+        }
+
+        .form-input {
+            transition: all 0.3s ease;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+        }
+
+        .form-input::placeholder {
+            color: #9CA3AF;
+        }
+
+        .form-input:focus {
+            outline: 2px solid #6366F1;
+        }
+
+        .card-shadow {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-shadow {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="animsition">
+    
+    <!-- Header -->
+    <header class="header-v2">
+		<!-- Header desktop -->
+		<div class="container-menu-desktop trans-03">
+			<div class="wrap-menu-desktop">
+				<nav class="limiter-menu-desktop p-l-45">
+					
+					<!-- Logo desktop -->		
+					<a href="#" class="logo">
+						<h1 style="font-size: 27px;font-weight: bolder;"><span style="color: #0a0908;" >Inventory</span> Management</h1>
+					</a>
+					
+					<!-- Menu desktop -->
+					<div class="menu-desktop">
+						<ul class="main-menu">
+							<li>
+								<a href="{% url 'index' %}">Home</a>
+							</li>
+							
+							
+							
+							<li   class="active-menu">
+								<a href="{% url 'user_login' %}">User</a>
+							</li>
+							
+							<li>
+								<a href="{% url 'admin_login' %}">Admin </a>
+							</li>
+						
+						</ul>
+					</div>	
+					
+					<!-- Icon header -->
+					<div class="wrap-icon-header flex-w flex-r-m h-full mr-5">
+						<a href="{% url 'user_register' %}" class="relative inline-block px-4 py-2 font-medium group">
+							<span class="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+							<span class="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-black"></span>
+							<span class="relative text-black group-hover:text-indigo-900">REGISTER</span>
+						</a>
+					</div>
+				</nav>
+			</div>	
+		</div>
+		
+		<!-- Header Mobile -->
+		<div class="wrap-header-mobile">
+			<!-- Logo moblie -->		
+			<div class="logo-mobile">
+				<a href="index.html"><h1 style="font-size: 27px;font-weight: bolder;"><span style="color: #0a0908;" >Inventory</span> Management</h1></a>
+			</div>
+			
+			<!-- Icon header -->
+			<div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
+				<a href="user-register.html" class="relative inline-block px-4 py-2 font-medium group">
+					<span class="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+					<span class="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-black"></span>
+					<span class="relative text-black group-hover:text-red-900">REGISTER</span>
+				</a>
+				
+			</div>
+			
+			<!-- Button show menu -->
+			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+				<span class="hamburger-box">
+					<span class="hamburger-inner"></span>
+				</span>
+			</div>
+		</div>
+		
+		
+		<!-- Menu Mobile -->
+		<div class="menu-mobile">
+			<ul class="main-menu-m">
+				<li>
+					<a href="{% url 'index' %}">Home</a>
+				</li>
+				
+				
+				<li  class="active-menu">
+					<a href="{% url 'user_login' %}">User</a>
+				</li>
+				
+				<li>
+					<a href="{% url 'admin_login' %}">Admin </a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		<!-- Modal Search -->
+		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+			<div class="container-search-header">
+				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+					<img src="{% static 'user/images/icons/icon-close2.png' %}" alt="CLOSE">
+
+				</button>
+				
+				<form class="wrap-search-header flex-w p-l-15">
+					<button class="flex-c-m trans-04">
+						<i class="zmdi zmdi-search"></i>
+					</button>
+					<input class="plh3" type="text" name="search" placeholder="Search...">
+				</form>
+			</div>
+		</div>
+	</header>
+    
+    
+    
+    <!-- Title page -->
+    <div class="flex flex-col md:flex-row rounded-2xl card-shadow overflow-hidden">
+        <!-- Left Image Panel -->
+        <div class="hidden md:block  w-1/2">
+            <img class="w-full h-full object-cover" src="{% static 'user/images/3img11.avif' %}" alt="A colorful illustration of a person sitting on a chair using a tablet."/>
+
+        </div>
+        
+        <div class="bg-white w-full mx-auto md:max-w-md p-8 shadow-lg">
+            <div class="mb-4">
+                <h2 class="text-4xl font-semibold text-gray-700 text-center">Hello Again!</h2>
+                <p class="text-gray-500 text-center">Welcome back you’ve been missed!</p>
+            </div>
+            <form action="" method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+                <div class="mb-4">
+                    <input type="email" name="email" placeholder="Enter username" class="form-input w-full px-4 py-2 border rounded-md focus:outline-none" required/>
+                </div>
+                <div class="mb-4">
+                    <input type="password" name="password" placeholder="Password" class="form-input w-full px-4 py-2 border rounded-md focus:outline-none" required/>
+                </div>
+
+				<div class=" mb-4">
+					<input type="file" class="form-control" name="fingerprint" accept="image/*" required>
+					<p class="text-muted small">Upload your fingerprint for verification</p>
+				</div>
+
+
+                <div class="mb-4 flex justify-between">
+                    <div class="text-sm text-blue-500 hover:text-blue-700 cursor-pointer">Not a member? <a href="{% url 'user_register' %}" class="font-semibold">Register now</a></div>
+                    <div class="text-sm text-blue-500 hover:text-blue-700 cursor-pointer">Recovery Password</div>
+                </div>
+                <div class="mb-4">
+                    <button type="submit" class="btn-shadow w-full text-white p-2 rounded-md bg-green-600 hover:bg-green-700 transition-colors">Sign In</button>
+                </div>
+            </form>
+            <div class="flex items-center mt-4">
+                <div class="bg-gray-300 flex-grow h-px"></div>
+                <div class="mx-4 text-gray-500 uppercase text-xs">Or continue with</div>
+                <div class="bg-gray-300 flex-grow h-px"></div>
+            </div>
+            <div class="flex items-center justify-center space-x-4 mt-4">
+                <!-- Social Buttons -->
+                <button aria-label="Sign in with Google" class="rounded-full border border-gray-300 p-3">
+                    <i class="fab fa-google text-gray-500"></i>
+                </button>
+                <button aria-label="Sign in with Apple" class="rounded-full border border-gray-300 p-3">
+                    <i class="fab fa-apple text-gray-500"></i>
+                </button>
+                <button aria-label="Sign in with Facebook" class="rounded-full border border-gray-300 p-3">
+                    <i class="fab fa-facebook-f text-gray-500"></i>
+                </button>
+            </div>
+        </div>
+    </div>	
+    
+    
+    
+    <!-- Footer -->
+    <footer class="bg3 p-t-75 p-b-32">
+		<div class="container">
+			<div class="row container text-center">
+				<div class="col-sm-6 col-lg-6 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">
+					links
+					</h4>
+					
+					<ul>
+						<li class="p-b-10">
+							<a href="home-02.html" class="stext-107 cl7 hov-cl1 trans-04">
+								Home
+							</a>
+						</li>
+						
+						<li class="p-b-10">
+							<a href="about.html" class="stext-107 cl7 hov-cl1 trans-04">
+								our Story
+							</a>
+						</li>
+						
+						<li class="p-b-10">
+							<a href="user-login.html" class="stext-107 cl7 hov-cl1 trans-04">
+								 user-login
+							</a>
+						</li>
+						
+						<li class="p-b-10">
+							<a href="admin-login.html" class="stext-107 cl7 hov-cl1 trans-04">
+								Admin
+							</a>
+						</li>
+						<li class="p-b-10">
+							<a href="contact.html" class="stext-107 cl7 hov-cl1 trans-04">
+								contact
+							</a>
+						</li>
+					</ul>
+				</div>
+				
+				
+				
+				<div class="col-sm-6 col-lg-6 p-b-50 text-center">
+					<h4 class="stext-301 cl0 p-b-30">
+						GET IN TOUCH
+					</h4>
+					
+					<div class="">
+						<p class="stext-107 cl7 size-201 mx-auto">
+							New Gayatri Nagar, Lb Nagar Hyderabad.
+						</p>
+					</div>
+					
+					<div class="p-t-27">
+						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-facebook"></i>
+						</a>
+						
+						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-instagram"></i>
+						</a>
+						
+						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+							<i class="fa fa-pinterest-p"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+			
+			<div class="p-t-40">
+				
+				
+				<p class="stext-107 cl6 txt-center">
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://codeleaf.in" target="_blank">codeleaf</a>
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					
+				</p>
+			</div>
+		</div>
+	</footer>
+    
+    
+    <!-- Back to top -->
+    <div class="btn-back-to-top" id="myBtn">
+        <span class="symbol-btn-back-to-top">
+            <i class="zmdi zmdi-chevron-up"></i>
+        </span>
+    </div>
+    
+    <script src="{% static 'user/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'user/vendor/animsition/js/animsition.min.js' %}"></script>
+	<script src="{% static 'user/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'user/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'user/vendor/select2/select2.min.js' %}"></script>
+    <script>
+        $(".js-select2").each(function(){
+            $(this).select2({
+                minimumResultsForSearch: 20,
+                dropdownParent: $(this).next('.dropDownSelect2')
+            });
+        })
+    </script>
+    <!--===============================================================================================-->
+    <script src="{% static 'user/vendor/MagnificPopup/jquery.magnific-popup.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'user/vendor/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+    <script>
+        $('.js-pscroll').each(function(){
+            $(this).css('position','relative');
+            $(this).css('overflow','hidden');
+            var ps = new PerfectScrollbar(this, {
+                wheelSpeed: 1,
+                scrollingThreshold: 1000,
+                wheelPropagation: false,
+            });
+            
+            $(window).on('resize', function(){
+                ps.update();
+            })
+        });
+    </script>
+    <!--===============================================================================================-->
+    <script src="{% static 'user/js/main.js' %}"></script>
+    
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+{% if messages %}
+    {% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+            <script>
+                swal({
+                    title: "Warning!",
+                    text: "{{ message }}",
+                    icon: "warning",
+                    button: "OK",
+                });
+            </script>
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+            <script>
+                swal({
+                    title: "Info :)",
+                    text: "{{ message }}",
+                    icon: "info",
+                    button: "OK",
+                });
+            </script>
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <script>
+                swal({
+                    title: "Error :)",
+                    text: "{{ message }}",
+                    icon: "error",
+                    button: "OK",
+                });
+            </script>
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <script>
+                swal({
+                    title: "Success :)",
+                    text: "{{ message }}",
+                    icon: "success",
+                    button: "OK",
+                });
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+</html>
